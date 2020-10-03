@@ -2,7 +2,12 @@ var currentLocation = "currentLocation";
 var recipientLocation = "recipientLocation";
 var recipientName = "recipientName";
 var messageType = "messageType";
-var transferMessage = "transferMessage";
+var textTransferMessage = "textTransferMessage";
+var voiceTransferMessage = "voiceTransferMessage";
+var videoTransferMessage = "videoTransferMessage";
+var dataTransferMessage = "dataTransferMessage";
+var imageTransferMessage = "imageTransferMessage";
+var predefinedTransferMessage = "predefinedTransferMessage";
 var transferMethod = "transferMethod";
 var background = "background";
 var currentScenario = "";
@@ -19,6 +24,14 @@ function doSomething() {
 function messageTypeChanged() {
     var opt = getSelectedOption(messageType).id;
 
+    var sel = document.getElementsByClassName("messages");
+
+    for (var i = 0; i < sel.length; i++) {
+        sel[i].style.display = "none";
+    }
+
+    sel = document.getElementById(opt+"Message");
+    sel.style.display = "";
 }
 
 function setBackground() {

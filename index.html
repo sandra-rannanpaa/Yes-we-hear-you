@@ -80,15 +80,54 @@
                     <label for="messageType" data-toggle="tooltip" data-placement="top"> Message type:</label>
                     <select class="form-control" id="messageType" onchange="return messageTypeChanged();">
                         <option id="text">Text message</option>
-                        <option id="voice">Voice message</option>
-                        <option id="data">Science data</option>
                         <option id="image">Image</option>
+                        <option id="voice">Voice message</option>
+                        <option id="video">Video message</option>
+                        <option id="data">Science data</option>
                         <option id="predefined">Predefined</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="transferMessage">Message:</label>
-                    <textarea class="form-control" rows="5" id="transferMessage"></textarea>
+                    <div id="textMessage" class="messages">
+                        <label for="textTransferMessage">Message:</label>
+                        <textarea class="form-control" rows="5" id="textTransferMessage"></textarea>
+                    </div>
+                    <div id="imageMessage" class="messages" style="display: none">
+                        <label for="imageTransferMessage">Image:</label>
+                        <div id="imageTransferMessage">
+                            <input type="file" name="img" accept="image/*">
+                            <textarea class="form-control" rows="2" placeholder="Insert description"></textarea>
+                        </div>
+                    </div>
+                    <div id="voiceMessage" class="messages" style="display: none">
+                        <label for="voiceTransferMessage">Voice Message:</label>
+                        <div id="voiceTransferMessage">
+                            <input type="file" name="img" accept="audio/*">
+                            <textarea class="form-control" rows="3" placeholder="Insert description"></textarea>
+                        </div>
+                    </div>
+                    <div id="videoMessage" class="messages" style="display: none">
+                        <label for="videoTransferMessage">Video Message:</label>
+                        <div id="videoTransferMessage">
+                            <input type="file" name="video" accept="video/*">
+                            <textarea class="form-control" rows="3" placeholder="Insert description"></textarea>
+                        </div>
+                    </div>
+                    <div id="dataMessage" class="messages" style="display: none">
+                        <label for="dataTransferMessage">Science data Message:</label>
+                        <div id="dataTransferMessage">
+                            <input type="file" name="science-data" accept="*/*">
+                            <textarea class="form-control" rows="3" placeholder="Insert description"></textarea>
+                        </div>
+                    </div>
+                    <div id="predefinedMessage" class="messages" style="display: none">
+                        <label for="predefinedTransferMessage">Predefined Message:</label>
+                        <select class="form-control" id="predefinedTransferMessage" onchange="return messageTypeChanged();">
+                            <option>Weather is nice</option>
+                            <option>Weather is bad</option>
+                            <option>Sandstorm in coming</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="transferMethod">Transfer method:</label>
