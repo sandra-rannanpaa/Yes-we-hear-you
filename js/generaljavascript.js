@@ -1,13 +1,3 @@
-class MessageInformation {
-    constructor(location, rlocation, rname, type, method) {
-        this.location = location;
-        this.rlocation = rlocation;
-        this.rname = rname;
-        this.type = type;
-        this.method = method;
-    }
-}
-
 var currentLocation = "currentLocation";
 var recipientLocation = "recipientLocation";
 var recipientName = "recipientName";
@@ -15,26 +5,32 @@ var messageType = "messageType";
 var transferMessage = "transferMessage";
 var transferMethod = "transferMethod";
 var background = "background";
+var currentScenario = "";
+var sendMessage = "SendMessage";
+var sendMessageButton = "sendMessageButton";
+var submitButton = "submitButton";
 
 function doSomething() {
     var opt = getSelectedOption(currentLocation).value;
 
-    alert(opt);
     return false;
 }
 
 function messageTypeChanged() {
     var opt = getSelectedOption(messageType).id;
 
-    alert(opt);
 }
 
 function setBackground() {
 
-    var sel = document.getElementById(background)
-
-    sel.style = "background-image: url('images/scenario2.png')";
+    if (currentScenario != "") {
+        var sel = document.getElementById(background);
+        sel.style = "background-image: url('images/" + currentScenario + "')";
+    } else {
+        resetBackground();
+    }
 }
+
 function resetBackground() {
 
     var sel = document.getElementById(background)
@@ -43,7 +39,7 @@ function resetBackground() {
 
 function getSelectedOption(selectedId) {
 
-    var sel = document.getElementById(selectedId)
+    var sel = document.getElementById(selectedId);
     var opt;
 
     for (var i = 0, len = sel.options.length; i < len; i++) {
@@ -56,40 +52,27 @@ function getSelectedOption(selectedId) {
 }
 
 function changeTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
+    changeTabs(tabName);
+}
+
+function changeTabs(tabName) {
+    var i;
+    var tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
 
     document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-    if (tabName != "Scenario") {
-        setBackground();
-    } else {
-        resetBackground();
-    }
+    setBackground();
 }
 
 function changeScenario(scenario) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
+    currentScenario = scenario + ".png";
+    changeButtonState(sendMessageButton, false);
+    changeTabs(sendMessage);
+}
 
-    document.getElementById(tabName).style.display = "block";
-    if (scenario != "Scenario") {
-        setBackground();
-    } else {
-        resetBackground();
-    }
+function changeButtonState(buttonId, state) {
+    var button = document.getElementById(buttonId);
+    button.disabled = state;
 }

@@ -20,7 +20,7 @@
                     <button class="btn btn-link btn-block tablinks active" onclick="changeTab(event, 'Scenario')">Scenario</button>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-link btn-block tablinks" onclick="changeTab(event, 'SendMessage')">Send Message</button>
+                    <button id="sendMessageButton" disabled="True" class="btn btn-link btn-block tablinks" onclick="changeTab(event, 'SendMessage')">Send Message</button>
                 </li>
             </ul>
         </nav>
@@ -28,14 +28,14 @@
 
     <div id="Scenario" class="container row tabcontent" style="display: block">
         <div class="col-sm-4 card">
-            <img src="images/scenario1.png" alt="scenario3" class="img-fluid card-img-top" onclick="changeScenario('scenario3')" />
+            <img src="images/scenario1.png" alt="scenario3" class="img-fluid card-img-top" onclick="changeScenario('scenario1')" />
             <div class="card-body">
                 <h5 class="card-title">Scenario 1</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
         <div class="col-sm-4 card">
-            <img src="images/scenario2.png" alt="scenario3" class="img-fluid card-img-top" onclick="changeScenario('scenario3')" />
+            <img src="images/scenario2.png" alt="scenario3" class="img-fluid card-img-top" onclick="changeScenario('scenario2')" />
             <div class="card-body">
                 <h5 class="card-title">Scenario 2</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -108,16 +108,13 @@ Deep Space Networking (DSN)
                     </select>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">Send</button>
+                    <button type="submit" id="submitButton" disabled="true" class="btn btn-primary btn-block">Send</button>
                 </div>
             </form>
         </div>
 
         <div class="col-sm-7">
-
             <div class="row">
-
-
                 <div class="col-sm-12 alert-danger">
 
                     todo
