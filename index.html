@@ -9,10 +9,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/generaljavascript.js"></script>
+    <link rel="stylesheet" href="./styles/generalstyle.css">
 </head>
 <body id="background" style="background-color: black;">
     
-<div style="padding-bottom: 70px; width: 90%">
+<div style="padding-bottom: 70px;">
     <div class="row nav tab">
         <nav class="navbar navbar-expand-sm">
             <ul class="navbar-nav">
@@ -26,7 +27,7 @@
         </nav>
     </div>
 
-    <div id="Scenario" class="container row tabcontent" style="display: block">
+    <div id="Scenario" class="container-fluid row tabcontent">
         <div class="col-sm-4 card">
             <img src="images/scenario1.png" alt="scenario3" class="img-fluid card-img-top" onclick="changeScenario('scenario1')" />
             <div class="card-body">
@@ -50,9 +51,9 @@
         </div>
     </div>
 
-
-    <div id="SendMessage" class="container row tabcontent" style="display: none">
-        <div class="col-sm-5">
+    
+    <div id="SendMessage" class="container-fluid row tabcontent" style="display: none" >
+        <div class="col-sm-3">
             <form onsubmit="return doSomething();" class="my-form">
                 <h4>Send a message of your choice, and see how the transmission works in space! </h4>
                 <div class="form-group">
@@ -92,16 +93,16 @@
                 <div class="form-group">
                     <label for="transferMethod">Transfer method:</label>
                     <i class="fa fa-info-circle" title="
-Deep Space Optical Communication (DSOC)
-    is using laser space communication
-    system, it can provide higher
-    bandwidth in comparison to DSN.
-    DSOC is still under development.
+        Deep Space Optical Communication (DSOC)
+            is using laser space communication
+            system, it can provide higher
+            bandwidth in comparison to DSN.
+            DSOC is still under development.
 
-Deep Space Networking (DSN)
-    is a network of radio antennas
-    that transmits over microwave
-    frequencies"></i>
+        Deep Space Networking (DSN)
+            is a network of radio antennas
+            that transmits over microwave
+            frequencies"></i>
                     <select class="form-control" id="transferMethod">
                         <option>Deep Space Optical Communications</option>
                         <option>Deep Space Network</option>
@@ -113,11 +114,11 @@ Deep Space Networking (DSN)
             </form>
         </div>
 
-        <div class="col-sm-7">
+        <div class="col-sm-9">
             <div class="row">
                 <div class="col-sm-12 alert-danger">
 
-                    todo
+                    todo<br/>
                     Add graphical element
                 </div>
             </div>

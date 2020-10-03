@@ -62,7 +62,9 @@ function changeTabs(tabName) {
         tabcontent[i].style.display = "none";
     }
 
-    document.getElementById(tabName).style.display = "block";
+    var ad = document.getElementById(tabName).style.display;
+    
+    document.getElementById(tabName).style.display = "";
     setBackground();
 }
 
