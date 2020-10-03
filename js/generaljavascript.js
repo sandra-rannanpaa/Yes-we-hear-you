@@ -14,6 +14,7 @@ var recipientName = "recipientName";
 var messageType = "messageType";
 var transferMessage = "transferMessage";
 var transferMethod = "transferMethod";
+var background = "background";
 
 function doSomething() {
     var opt = getSelectedOption(currentLocation).value;
@@ -28,6 +29,18 @@ function messageTypeChanged() {
     alert(opt);
 }
 
+function setBackground() {
+
+    var sel = document.getElementById(background)
+
+    sel.style = "background-image: url('images/scenario2.png')";
+}
+function resetBackground() {
+
+    var sel = document.getElementById(background)
+    sel.style = "background-color: black";
+}
+
 function getSelectedOption(selectedId) {
 
     var sel = document.getElementById(selectedId)
@@ -40,4 +53,43 @@ function getSelectedOption(selectedId) {
         }
     }
     return opt;
+}
+
+function changeTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+    if (tabName != "Scenario") {
+        setBackground();
+    } else {
+        resetBackground();
+    }
+}
+
+function changeScenario(scenario) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    document.getElementById(tabName).style.display = "block";
+    if (scenario != "Scenario") {
+        setBackground();
+    } else {
+        resetBackground();
+    }
 }
