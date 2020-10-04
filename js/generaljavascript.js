@@ -11,9 +11,15 @@ var predefinedTransferMessage = "predefinedTransferMessage";
 var transferMethod = "transferMethod";
 var background = "background";
 var currentScenario = "";
+var scenario = "Scenario";
 var sendMessage = "SendMessage";
 var sendMessageButton = "sendMessageButton";
 var submitButton = "submitButton";
+
+
+function myFunction() {
+    alert("Hello World!");
+}
 
 function doSomething() {
     return false;
@@ -62,8 +68,14 @@ function getSelectedOption(selectedId) {
     return opt;
 }
 
-function changeTab(evt, tabName) {
-    changeTabs(tabName);
+function changeTab() {
+    var tab = scenario;
+
+    if (this.id == sendMessageButton) {
+        tab = sendMessage;
+    }
+
+    changeTabs(tab);
 }
 
 function changeTabs(tabName) {
@@ -76,11 +88,11 @@ function changeTabs(tabName) {
     setBackground();
 }
 
-function changeScenarios(event, scenario) {
-    changeScenario(scenario);
+function changeScenariosEventHandler() {
+    changeScenario(this.id);
+}
 
-} function changeScenario(scenario) {
-    
+function changeScenario(scenario) {
     currentScenario = scenario + ".png";
     changeButtonState(sendMessageButton, false);
     changeTabs(sendMessage);

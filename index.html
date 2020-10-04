@@ -13,17 +13,19 @@
 </head>
 <body id="background" style="background-image: url('images/sunrise.jpg')">
 
+
+
 <div class="row nav tab" style="padding-bottom: 70px;">
     <div class="nav-overlay" id="overlay">
 
 
-        <nav class="navbar navbar-expand-sm" >
+        <nav class="navbar navbar-expand-sm">
             <ul class="navbar-nav" id="nav">
-                <li class="nav-item" id="navitem" >
-                    <button class="btn btn-link btn-block tablinks navtext active" id="scenarioButton" onclick="changeTab(event, 'Scenario')">1. Choose scenario</button>
+                <li class="nav-item" id="navitem">
+                    <button class="btn btn-link btn-block tablinks navtext active" id="scenarioButton">1. Choose scenario</button>
                 </li>
                 <li class="nav-item" id="navitem">
-                    <button class="btn btn-link btn-block tablinks navtext" disabled="true" id="sendMessageButton" onclick="changeTab(event, 'SendMessage')">2. Send message</button>
+                    <button class="btn btn-link btn-block tablinks navtext" disabled="true" id="sendMessageButton">2. Send message</button>
                 </li>
             </ul>
         </nav>
@@ -34,22 +36,22 @@
     <div class="col-12">
         <h4 id="headingfour">Choose the scenario you want to explore the communication in!</h4>
         <div class="container-fluid row" id="firstrow">
-            <div class="col-sm-4 card">
-                <img src="images/scenario1.png" alt="scenario1" class="img-fluid card-img-top" onclick="changeScenarios(event, 'scenario1')" />
+            <div class="col-sm-4 card" id="scenario1">
+                <img src="images/scenario1.png" alt="scenario1" class="img-fluid card-img-top" />
                 <div class="card-body">
                     <h5 class="card-title">Scenario 1</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>
-            <div class="col-sm-4 card">
-                <img src="images/scenario2.png" alt="scenario2" class="img-fluid card-img-top" onclick="changeScenarios(event, 'scenario2')" />
+            <div class="col-sm-4 card" id="scenario2">
+                <img src="images/scenario2.png" alt="scenario2" class="img-fluid card-img-top" />
                 <div class="card-body">
                     <h5 class="card-title">Scenario 2</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>
-            <div class="col-sm-4 card">
-                <img src="images/scenario3.png" alt="scenario3" class="img-fluid card-img-top" onclick="changeScenarios(event, 'scenario3')" />
+            <div class="col-sm-4 card" id="scenario3">
+                <img src="images/scenario3.png" alt="scenario3" class="img-fluid card-img-top" />
                 <div class="card-body">
                     <h5 class="card-title">Scenario 3</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -59,8 +61,8 @@
     </div>
 </div>
 
-    
-<div id="SendMessage" class="container-fluid row tabcontent" style="display: none" >
+
+<div id="SendMessage" class="container-fluid row tabcontent" style="display: none">
     <div class="col-sm-3">
         <form onsubmit="return doSomething();" class="my-form">
             <h4>Send a message of your choice, and see how the transmission works in space! </h4>
@@ -165,7 +167,7 @@
         <div class="row">
             <div class="col-sm-12 alert-danger">
 
-                todo<br/>
+                todo<br />
                 Add graphical element
             </div>
         </div>
@@ -181,5 +183,13 @@
         Sandra Rannanpää
     </footer>
 </div>
+<script>
+    document.getElementById("scenario1").addEventListener("click", changeScenariosEventHandler);
+    document.getElementById("scenario2").addEventListener("click", changeScenariosEventHandler);
+    document.getElementById("scenario3").addEventListener("click", changeScenariosEventHandler);
+
+    document.getElementById("scenarioButton").addEventListener("click", changeTab);
+    document.getElementById("sendMessageButton").addEventListener("click", changeTab);
+</script>
 </body>
 </html>
