@@ -9,7 +9,6 @@ var dataTransferMessage = "dataTransferMessage";
 var imageTransferMessage = "imageTransferMessage";
 var predefinedTransferMessage = "predefinedTransferMessage";
 var transferMethod = "transferMethod";
-var background = "background";
 var currentScenario = "";
 var scenario = "Scenario";
 var sendMessageButton = "scenarioButton";
@@ -23,8 +22,8 @@ var messageSize = 0;
 var astronomicalUnit = 149597871;
 var scenario1SignalRange = 477000000;
 var speedOfLight = 299792.458;
-var laserDataRate = 291666;
 var radioDataRate = 500 * 1024;
+var laserDataRate = 291666;
 
 function sendTheMessage() {
     var selectedTransferMethod = getSelectedOption(transferMethod);
@@ -43,9 +42,8 @@ function sendTheMessage() {
     if (selectedMessageType === "text") {
         ValidateTextSizeInBYTE(document.getElementById(textTransferMessage));
     } else if (selectedMessageType === "predefined") {
-        messageSize = 2;
+        messageSize = 1;
     }
-
 
     hideElement(document.getElementById("InputId"));
     ScenarioInformation();
@@ -73,7 +71,7 @@ function fileAdded() {
 }
 
 function ValidateTextSizeInBYTE(text) {
-    messageSize = text.value.length*8;
+    messageSize = text.value.length;
 }
 
 function ValidateSizeInBYTE(file, maxFileSize) {
@@ -233,7 +231,7 @@ function ScenarioInformation() {
 
     var text = "";
     var timeDelay = 0;
-    var distanceBetweenPlantes = 0;
+    var distanceBetweenPlanets = 0;
     var distanceForSignal = 0;
     var distanceMotivation = "";
 
@@ -242,11 +240,11 @@ function ScenarioInformation() {
         timeDelay = scenario1SignalRange / speedOfLight;
 
         aboutTransmissionsText += "Size of the message: " + messageSize + " bytes\n";
-        distanceBetweenPlantes = 377000000;
+        distanceBetweenPlanets = 377000000;
         distanceMotivation = "\nas the signal goes around the sun trough the lagrange points";
 
         aboutTransmissionsTooltipText =
-            "Lagrange Points"+
+            "Lagrange Points" +
             "Gravitational forces of the sun and earth can produce enhanced regions of attraction and repulsion. \n\n" +
             "This is where Lagrange Points appears. " +
             "Objects sent to a point tend to stay put. There are five Lagrange points placed around the sun and earth. " +
@@ -258,7 +256,9 @@ function ScenarioInformation() {
 
         var messageTransferMethod = "radio";
         var textAboutTransferSpeed =
-            "With help from the Mars Reconnaissance Orbiter it is possible to send data at a rate of at least " +  transferSpeed + "bits per second," +
+            "With help from the Mars Reconnaissance Orbiter it is possible to send data at a rate of at least " +
+                transferSpeed +
+                "bits per second," +
                 " and at closer ranges even higher";
 
         var selectedTransferMethod = getSelectedOption(transferMethod).id;
@@ -270,14 +270,17 @@ function ScenarioInformation() {
         }
 
         aboutTransmissionsText += "Distance Mars - Earth: " +
-            distanceBetweenPlantes +
+            distanceBetweenPlanets +
             "km (" +
-            (distanceBetweenPlantes / astronomicalUnit).toFixed(3) +
+            (distanceBetweenPlanets / astronomicalUnit).toFixed(3) +
             " Au)\n";
 
-            aboutTransmissionsText += "Signal distance: " + distanceForSignal 
-            + "km (" + (distanceForSignal / astronomicalUnit).toFixed(3) + " Au)"
-            + distanceMotivation;
+        aboutTransmissionsText += "Signal distance: " +
+            distanceForSignal +
+            "km (" +
+            (distanceForSignal / astronomicalUnit).toFixed(3) +
+            " Au)" +
+            distanceMotivation;
 
         var dataTransferTime = messageSize / transferSpeed;
         var transferTime = timeDelay + dataTransferTime;
@@ -306,8 +309,7 @@ function ScenarioInformation() {
     aboutTransmissionsTooltip.title = aboutTransmissionsTooltipText;
     if (aboutTransmissionsTooltipText !== "") {
         aboutTransmissionsTooltip.style.display = "";
-    }
-    else {
+    } else {
         aboutTransmissionsTooltip.style.display = "none";
     }
 
