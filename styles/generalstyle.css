@@ -1,43 +1,34 @@
 #overlay {
   background-color: hsla(22, 90%, 60%, 0.15);
   width: 100%;
-  border-bottom: 3px solid hsla(22, 90%, 60%, 0.9);
-
+  border-bottom: 3px solid hsla(22, 90%, 60%, 0.9)
 }
 
-#scenarioButton, #sendMessageButton {
-  margin-left: 15px;
-  padding: 10px;
-  color: white;
-  border-color: hsla(22, 90%, 60%, 0.6);
-  background-color: black;
+#scenarioButton, #sendMessageButton, #backbutton {
+    margin-left: 15px;
+    padding: 10px;
+    color: white;
+    border-color: hsla(22, 90%, 60%, 0.6);
+    background-color: black;
 }
-#scenarioButton.active, #sendMessageButton.active {
-  background-color: hsla(22, 90%, 60%, 0.8);
 
-}
-#navitem.active {
-  background-color: hsla(22, 90%, 60%, 0.9);
+#scenarioButton.active, #sendMessageButton.active { background-color: hsla(22, 90%, 60%, 0.8); }
 
-}
+#navitem.active { background-color: hsla(22, 90%, 60%, 0.9); }
+
 #headingfour {
-  text-align: left;
-  margin-left: 15px;
-  margin-bottom: 13px;
-  margin-top: 7px;
-
+    text-align: left;
+    margin-left: 15px;
+    margin-bottom: 13px;
+    margin-top: 7px;
 }
 #headingSendMSG {
-  margin-left: 1px;
-  margin-top: 7px;
-}
-#background {
-  background-image: url('images/sunrise.jpg');
+    margin-left: 1px;
+    margin-top: 7px;
 }
 .footer {
     line-height: 60px; /* Vertically center the text there */
     color: black;
-
 }
 .row {
     margin-left: 0;
@@ -45,6 +36,5 @@
 }
 
 #scenario1, #scenario2, #scenario3 {
-  padding: 10px;
-
+    padding: 10px;
 }
