@@ -1,7 +1,7 @@
 #overlay {
-  background-color: hsla(25, 30%, 30%, 0.3);
+  background-color: hsla(22, 90%, 60%, 0.15);
   width: 100%;
-  border-bottom: 3px solid hsla(25, 80%, 60%, 0.6);
+  border-bottom: 3px solid hsla(22, 90%, 60%, 0.9);
 
 }
 
@@ -9,13 +9,15 @@
   margin-left: 15px;
   padding: 10px;
   color: white;
-  border-color: hsla(21, 15%, 50%, 0.6);
+  border-color: hsla(22, 90%, 60%, 0.6);
+  background-color: black;
 }
 #scenarioButton.active, #sendMessageButton.active {
-  background-color: hsla(25, 80%, 60%, 0.6);
+  background-color: hsla(22, 90%, 60%, 0.8);
+
 }
 #navitem.active {
-  background-color: hsla(25, 80%, 60%, 0.6);
+  background-color: hsla(22, 90%, 60%, 0.9);
 
 }
 #headingfour {
