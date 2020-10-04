@@ -11,21 +11,33 @@
   color: white;
   border-color: hsla(21, 15%, 50%, 0.6);
 }
-#navtext.active {
+#scenarioButton.active, #sendMessageButton.active {
   background-color: hsla(25, 80%, 60%, 0.6);
+}
+#navitem.active {
+  background-color: hsla(25, 80%, 60%, 0.6);
+
 }
 #headingfour {
   text-align: left;
+  margin-left: 13px;
   margin-bottom: 13px;
-  margin-top: 10px;
+
 }
 #background {
   background-image: url('images/sunrise.jpg');
 }
 .footer {
     line-height: 60px; /* Vertically center the text there */
+    color: black;
+
 }
 .row {
     margin-left: 0;
     margin-right: 0;
+}
+
+#scenario1, #scenario2, #scenario3 {
+  padding: 10px;
+
 }
