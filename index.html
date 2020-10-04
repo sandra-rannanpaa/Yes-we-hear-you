@@ -9,7 +9,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/generaljavascript.js"></script>
-    <link rel="stylesheet" href="./styles/generalstyle.css">
+    <link rel="stylesheet" href="./styles/generalstyle.css?v=1">
+
+    <script type="text/javascript" language="javascript">
+        var versionUpdate = (new Date()).getTime();
+        var script = document.createElement("script");
+        script.src = "./js/generaljavascript.js?v=" + versionUpdate;
+        document.head.appendChild(script);
+    </script>
 </head>
 <body id="background" style="background-image: url('images/sunrise.jpg')">
 
