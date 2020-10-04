@@ -10,7 +10,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/generaljavascript.js"></script>
+    <link rel="stylesheet" href="./styles/generalstyle.css">
 </head>
+<<<<<<< HEAD
 <body id="background" style="background-image: url('images/sunrise.jpg')">
 
 <div class="row nav tab" style = "background-image: url('images/sunrise.jpg')">
@@ -113,25 +115,170 @@
                     <option>Deep Space Optical Communications</option>
                     <option>Deep Space Network</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Send</button>
-            </div>
-        </form>
+=======
+<body id="background" style="background-color: black;">
+    
+<div style="padding-bottom: 70px;">
+    <div class="row nav tab">
+        <nav class="navbar navbar-expand-sm">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <button class="btn btn-link btn-block tablinks active" onclick="changeTab(event, 'Scenario')">Scenario</button>
+                </li>
+                <li class="nav-item">
+                    <button id="sendMessageButton" disabled="True" class="btn btn-link btn-block tablinks" onclick="changeTab(event, 'SendMessage')">Send Message</button>
+                </li>
+            </ul>
+        </nav>
     </div>
 
-    <div class="col-sm-7">
-
-        <div class="row">
-
-
-            <div class="col-sm-12 alert-danger">
-
-                todo
-                Add graphical element
+    <div id="Scenario" class="container-fluid row tabcontent" onclick="changeScenario('scenario1')">
+        <div class="col-sm-4 card">
+            <img src="images/scenario1.png" alt="scenario1" class="img-fluid card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Scenario 1</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+        <div class="col-sm-4 card" onclick="changeScenario('scenario2')">
+            <img src="images/scenario2.png" alt="scenario2" class="img-fluid card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Scenario 2</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+>>>>>>> 0131b8767b13d8b6b187cf6f7524d0719a83c7e5
+            </div>
+        </div>
+        <div class="col-sm-4 card" onclick="changeScenario('scenario3')">
+            <img src="images/scenario3.png" alt="scenario3" class="img-fluid card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Scenario 3</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
     </div>
+
+    
+    <div id="SendMessage" class="container-fluid row tabcontent" style="display: none" >
+        <div class="col-sm-3">
+            <form onsubmit="return doSomething();" class="my-form">
+                <h4>Send a message of your choice, and see how the transmission works in space! </h4>
+                <div class="form-group">
+                    <label for="currentLocation">Send from:</label>
+                    <select class="form-control" id="currentLocation">
+                        <option>Mars</option>
+                        <option>Earth</option>
+                        <option>ISS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="recipientLocation">Send to:</label>
+                    <select class="form-control" id="recipientLocation">
+                        <option>Mars</option>
+                        <option>Earth</option>
+                        <option>ISS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="recipientName">Recipient name:</label>
+                    <input type="text" class="form-control" id="recipientName">
+                </div>
+                <div class="form-group">
+                    <label for="messageType" data-toggle="tooltip" data-placement="top"> Message type:</label>
+                    <select class="form-control" id="messageType" onchange="return messageTypeChanged();">
+                        <option id="text">Text message</option>
+                        <option id="image">Image</option>
+                        <option id="voice">Voice message</option>
+                        <option id="video">Video message</option>
+                        <option id="data">Science data</option>
+                        <option id="predefined">Predefined</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div id="textMessage" class="messages">
+                        <label for="textTransferMessage">Message:</label>
+                        <textarea class="form-control" rows="5" id="textTransferMessage"></textarea>
+                    </div>
+                    <div id="imageMessage" class="messages" style="display: none">
+                        <label for="imageTransferMessage">Image:</label>
+                        <div id="imageTransferMessage">
+                            <input type="file" name="img" accept="image/*">
+                            <textarea class="form-control" rows="2" placeholder="Insert description"></textarea>
+                        </div>
+                    </div>
+                    <div id="voiceMessage" class="messages" style="display: none">
+                        <label for="voiceTransferMessage">Voice Message:</label>
+                        <div id="voiceTransferMessage">
+                            <input type="file" name="img" accept="audio/*">
+                            <textarea class="form-control" rows="3" placeholder="Insert description"></textarea>
+                        </div>
+                    </div>
+                    <div id="videoMessage" class="messages" style="display: none">
+                        <label for="videoTransferMessage">Video Message:</label>
+                        <div id="videoTransferMessage">
+                            <input type="file" name="video" accept="video/*">
+                            <textarea class="form-control" rows="3" placeholder="Insert description"></textarea>
+                        </div>
+                    </div>
+                    <div id="dataMessage" class="messages" style="display: none">
+                        <label for="dataTransferMessage">Science data Message:</label>
+                        <div id="dataTransferMessage">
+                            <input type="file" name="science-data" accept="*/*">
+                            <textarea class="form-control" rows="3" placeholder="Insert description"></textarea>
+                        </div>
+                    </div>
+                    <div id="predefinedMessage" class="messages" style="display: none">
+                        <label for="predefinedTransferMessage">Predefined Message:</label>
+                        <select class="form-control" id="predefinedTransferMessage" onchange="return messageTypeChanged();">
+                            <option>Weather is nice</option>
+                            <option>Weather is bad</option>
+                            <option>Sandstorm in coming</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="transferMethod">Transfer method:</label>
+                    <i class="fa fa-info-circle" title="
+        Deep Space Optical Communication (DSOC)
+            is using laser space communication
+            system, it can provide higher
+            bandwidth in comparison to DSN.
+            DSOC is still under development.
+
+        Deep Space Networking (DSN)
+            is a network of radio antennas
+            that transmits over microwave
+            frequencies"></i>
+                    <select class="form-control" id="transferMethod">
+                        <option>Deep Space Optical Communications</option>
+                        <option>Deep Space Network</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="submitButton" disabled="true" class="btn btn-primary btn-block">Send</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-12 alert-danger">
+
+                    todo<br/>
+                    Add graphical element
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="navbar fixed-bottom alert-info">
+    <footer style="vertical-align: center">
+        <a class="text-center text-black-50" href="https://2020.spaceappschallenge.org/challenges/connect/can-you-hear-me-now/resources">2020 Space Apps Challenge</a>
+        -
+        David Rönnqvist,
+        Johanna Lindoff,
+        Tilda Engberg,
+        Sandra Rannanpää
+    </footer>
 </div>
 </body>
 </html>
