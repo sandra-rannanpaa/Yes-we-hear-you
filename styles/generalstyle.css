@@ -1,7 +1,30 @@
+#overlay {
+  background-color: hsla(25, 0%, 0%, 0.4);
+  width: 100%;
+  border-bottom: 3px solid hsla(25, 80%, 60%, 0.6);
+
+}
+
+.navtext {
+  margin-left: 34px;
+  padding: 10px;
+  color: white;
+  border-color: hsla(21, 15%, 50%, 0.6);
+}
+#navtext.active {
+  background-color: hsla(25, 80%, 60%, 0.6);
+}
+#headingfour {
+  text-align: left;
+  margin-bottom: 13px;
+  margin-top: 10px;
+}
+#background {
+  background-image: url('images/sunrise.jpg');
+}
 .footer {
     line-height: 60px; /* Vertically center the text there */
 }
-
 .row {
     margin-left: 0;
     margin-right: 0;
