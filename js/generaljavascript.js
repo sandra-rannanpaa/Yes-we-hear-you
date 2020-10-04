@@ -16,22 +16,39 @@ var sendMessageButton = "scenarioButton";
 var sendMessage = "SendMessage";
 var sendMessageButton = "sendMessageButton";
 var backButton = "backButton";
+var tryAgainButton = "tryAgainButton";
 var submitButton = "submitButton";
 var messageSize = 0;
+
+var astronomicalUnit = 149597871;
+var scenario1SignalRange = 477000000;
+var speedOfLight = 299792.458;
+var laserDataRate = 291666;
+var radioDataRate = 500 * 1024;
 
 function sendTheMessage() {
     var selectedTransferMethod = getSelectedOption(transferMethod);
 
-    hideElement(document.getElementById("InputId"));
 
     if (selectedTransferMethod.id === "laser") {
         setSolarSystemLaserImage();
-        updateOutPut("OutputLaserId");
+        updateOutPut();
     } else {
         setSolarSystemRadioImage();
-        updateOutPut("OutputRadioId");
+        updateOutPut();
     }
 
+    var selectedMessageType = getSelectedOption(messageType).id;
+
+    if (selectedMessageType === "text") {
+        ValidateTextSizeInBYTE(document.getElementById(textTransferMessage));
+    } else if (selectedMessageType === "predefined") {
+        messageSize = 2;
+    }
+
+
+    hideElement(document.getElementById("InputId"));
+    ScenarioInformation();
     return false;
 }
 
@@ -45,17 +62,21 @@ function fileAdded() {
     sizeElement.innerText = "";
     var file = document.getElementById(inputId);
     
-    ValidateSizeInMB(file, 5 * 1024 * 1024 * 1024);
+    ValidateSizeInBYTE(file, 5 * 1024 * 1024 * 1024);
 
     if (messageSize > 0) {
-        var message = messageElementId + " size: " + messageSize + " byte";
+        var message = messageElementId + " size: " + messageSize + " bytes";
         sizeElement.innerText = message;
     } else {
         sizeElement.innerText = "";
     }
 }
 
-function ValidateSizeInMB(file, maxFileSize) {
+function ValidateTextSizeInBYTE(text) {
+    messageSize = text.value.length*8;
+}
+
+function ValidateSizeInBYTE(file, maxFileSize) {
     messageSize = 0;
     if (file.files.length < 1) {
         messageSize = 0;
@@ -65,6 +86,7 @@ function ValidateSizeInMB(file, maxFileSize) {
             messageSize = localFileSize;
         }
     }
+    //ScenarioInformation();
 }
 
 function messageTypeChanged() {
@@ -142,7 +164,7 @@ function getSelectedOption(selectedId) {
 function changeTab() {
     var tab = scenario;
 
-    if (this.id === sendMessageButton || this.id === backButton) {
+    if (this.id === sendMessageButton || this.id === backButton || this.id === tryAgainButton) {
         tab = sendMessage;
     }
 
@@ -187,12 +209,88 @@ function changeButtonState(buttonId, state) {
 
 function hideOutPut() {
     hideElement(document.getElementById("OutputGeneralId"));
-    hideElement(document.getElementById("OutputRadioId"));
-    hideElement(document.getElementById("OutputLaserId"));
 }
 
-function updateOutPut(outputId) {
-    hideOutPut();
+function updateOutPut() {
     showElement(document.getElementById("OutputGeneralId"));
-    showElement(document.getElementById(outputId));
+}
+
+function ScenarioInformation() {
+    var scenarioInformation = document.getElementById("scenarioInformationId");
+    scenarioInformation.innerText = "";
+
+    var dataTransferInformation = document.getElementById("dataTransferInformationId");
+    dataTransferInformation.innerText = "";
+    var dataTransferInformationText = "";
+
+    var aboutTransmissionsId = document.getElementById("aboutTransmissionsId");
+    aboutTransmissionsId.innerText = "";
+    var aboutTransmissionsText = "";
+
+    var text = "";
+    var timeDelay = 0;
+    var distanceBetweenPlantes = 0;
+    var distanceForSignal = 0;
+    var distanceMotivation = "";
+
+    if (currentScenario === "scenario1") {
+        distanceForSignal = scenario1SignalRange;
+        timeDelay = scenario1SignalRange / speedOfLight;
+
+        aboutTransmissionsText += "Size of the message: " + messageSize + " bytes\n";
+        distanceBetweenPlantes = 377000000;
+        distanceMotivation = "as the signal goes around the sun trough the lagrange points";
+    }
+
+    if (timeDelay > 0) {
+        var transferSpeed = radioDataRate;
+
+        var messageTransferMethod = "radio";
+        var textAboutTransferSpeed =
+            "With help from the Mars Reconnaissance Orbiter it is possible to send data at a rate of at least " +  transferSpeed + "bits per second," +
+                " and at closer ranges even higher\n";
+
+        var selectedTransferMethod = getSelectedOption(transferMethod).id;
+
+        if (selectedTransferMethod === "laser") {
+            messageTransferMethod = "laser";
+            textAboutTransferSpeed = "";
+            transferSpeed = laserDataRate;
+        }
+
+        aboutTransmissionsText += "Distance Mars - Earth: " +
+            distanceBetweenPlantes +
+            "km (" +
+            (distanceBetweenPlantes / astronomicalUnit).toFixed(3) +
+            " Au)\n";
+
+            aboutTransmissionsText += "Signal distance: " + distanceForSignal 
+            + "km (" + (distanceForSignal / astronomicalUnit).toFixed(3) + " Au) \n"
+            + distanceMotivation + "\n\n";
+
+        var dataTransferTime = messageSize / transferSpeed;
+        var transferTime = timeDelay + dataTransferTime;
+        var timeToTransfer = "Time delay: " +
+            (timeDelay / 60).toFixed(2) +
+            " minutes\n" +
+            "Data transfer speed: " +
+            (dataTransferTime / 60).toFixed(2) +
+            " minutes\n" +
+            "Total time: " +
+            (transferTime / 60).toFixed(2) +
+            " minutes)";
+
+
+        dataTransferInformationText += textAboutTransferSpeed;
+
+
+        text += "\n";
+        text += "Transfer method: " + messageTransferMethod + "\n";
+        text += timeToTransfer;
+
+    }
+
+    scenarioInformation.innerText = text;
+    aboutTransmissionsId.innerText = aboutTransmissionsText;
+    dataTransferInformation.innerText = dataTransferInformationText;
 }
