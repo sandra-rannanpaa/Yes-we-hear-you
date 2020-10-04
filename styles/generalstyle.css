@@ -16,11 +16,18 @@
 
 #navitem.active { background-color: hsla(22, 90%, 60%, 0.9); }
 
-#welcome {
+#welcome-one {
   margin-left: 13px;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 40px;
   margin-bottom: 20px;
+}
+#welcome-two {
+  margin-left: 13px;
+  text-align: center;
+
+  margin-bottom: 40px;
+
 }
 #headingfour {
     text-align: left;
