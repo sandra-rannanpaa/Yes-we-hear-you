@@ -51,7 +51,7 @@ function setBackground() {
 function resetBackground() {
 
     var sel = document.getElementById(background);
-    sel.style = "background-color: black";
+    sel.style = "background-image: url('images/sunrise.jpg')";
 }
 
 function getSelectedOption(selectedId) {
