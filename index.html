@@ -174,27 +174,45 @@
 
         <div id="OutputGeneralId" class="col-sm-3" style="display: none">
             <div class="row">
-                <ul class="navbar-nav" id="nav">
+                <ul class="navbar-nav">
                     <li class="nav-item navitem">
                         <button class="btn btn-block tablinks navtext" style="margin-left: -10px;width: auto" id="backButton">Back &#x21A9;</button>
                     </li>
                 </ul>
-
                 <div class="col-sm-12">
-                    Hello All!
+                    <h4>Message delivered</h4>
+                    <div>See how your message traveled in the picture!</div><br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>About your transmission</h4>
+                    <div id="aboutTransmissionsId"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="dataTransferInformationId"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Time for the message to deliver</h4>
+                    <div id="scenarioInformationId"></div>
                 </div>
             </div>
             <br/>
             <div class="row">
-                <div id="OutputLaserId" class="col-sm-12" style="display: none">
-                    Hello Lasers
-                </div>
-                <div id="OutputRadioId" class="col-sm-12" style="display: none">
-                    Hello Radio heads
+                <div class="col-sm-12">
+                    <h4>Can you make it go faster?</h4>
+                    <ul class="navbar-nav">
+                        <li class="nav-item navitem">
+                            <button class="btn btn-block tablinks navtext" style="margin-left: -10px;width: auto" id="tryAgainButton"><h3>Try again</h3></button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-
         <div class="col-sm-9">
             <div class="row">
                 <div class="col-sm-12">
@@ -223,6 +241,7 @@
     document.getElementById("scenarioButton").addEventListener("click", changeTab);
     document.getElementById("sendMessageButton").addEventListener("click", changeTab);
     document.getElementById("backButton").addEventListener("click", changeTab);
+    document.getElementById("tryAgainButton").addEventListener("click", changeTab);
 </script>
 </body>
 </html>
