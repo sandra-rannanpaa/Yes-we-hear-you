@@ -61,22 +61,18 @@
 
     <div id="SendMessage" class="container-fluid row tabcontent" style="display: none">
         <div class="col-sm-3">
-            <form onsubmit="return doSomething();" class="my-form">
+            <form onsubmit="return sendTheMessage();" class="my-form">
                 <h4 id="headingSendMSG">Send a message of your choice, and see how the transmission works in space! </h4>
                 <div class="form-group">
                     <label for="currentLocation">Send from:</label>
                     <select class="form-control" id="currentLocation">
                         <option>Mars</option>
-                        <option>Earth</option>
-                        <option>ISS</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="recipientLocation">Send to:</label>
                     <select class="form-control" id="recipientLocation">
-                        <option>Mars</option>
                         <option>Earth</option>
-                        <option>ISS</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -102,28 +98,30 @@
                     <div id="imageMessage" class="messages" style="display: none">
                         <label for="imageTransferMessage">Image:</label>
                         <div id="imageTransferMessage">
-                            <input type="file" name="img" accept="image/*">
+                            <input type="file" id="imageInput" name="image" accept="image/*" oninput="fileAdded()">
+                            <div class="row" id="imageSize">
+                            </div>
                             <textarea class="form-control" rows="2" placeholder="Insert description"></textarea>
                         </div>
                     </div>
                     <div id="voiceMessage" class="messages" style="display: none">
                         <label for="voiceTransferMessage">Voice Message:</label>
                         <div id="voiceTransferMessage">
-                            <input type="file" name="img" accept="audio/*">
+                            <input type="file" id="voiceInput" name="voice" accept="audio/*" oninput="fileAdded()">
                             <textarea class="form-control" rows="3" placeholder="Insert description"></textarea>
                         </div>
                     </div>
                     <div id="videoMessage" class="messages" style="display: none">
                         <label for="videoTransferMessage">Video Message:</label>
                         <div id="videoTransferMessage">
-                            <input type="file" name="video" accept="video/*">
+                            <input type="file" id="videoInput" name="video" accept="video/*" oninput="fileAdded()">
                             <textarea class="form-control" rows="3" placeholder="Insert description"></textarea>
                         </div>
                     </div>
                     <div id="dataMessage" class="messages" style="display: none">
                         <label for="dataTransferMessage">Science data Message:</label>
                         <div id="dataTransferMessage">
-                            <input type="file" name="science-data" accept="*/*">
+                            <input type="file" id="dataInput" name="science-data" accept="*/*" oninput="fileAdded()">
                             <textarea class="form-control" rows="3" placeholder="Insert description"></textarea>
                         </div>
                     </div>
@@ -156,12 +154,12 @@
             that transmits over microwave
             frequencies"></i>
                     <select class="form-control" id="transferMethod">
-                        <option>Deep Space Optical Communications</option>
-                        <option>Deep Space Network</option>
+                        <option id="laser">Deep Space Optical Communications</option>
+                        <option id="radio">Deep Space Network</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <button type="submit" id="submitButton" disabled class="btn btn-primary btn-block">Send</button>
+                    <button type="submit" id="submitButton" class="btn btn-primary btn-block">Send</button>
                 </div>
             </form>
         </div>
