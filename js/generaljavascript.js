@@ -292,7 +292,7 @@ function ScenarioInformation() {
             " minutes\n" +
             "Total time: " +
             (transferTime / 60).toFixed(2) +
-            " minutes)";
+            " minutes";
 
 
         aboutTransmissionsTooltipText += textAboutTransferSpeed;
