@@ -223,6 +223,10 @@ function ScenarioInformation() {
     dataTransferInformation.innerText = "";
     var dataTransferInformationText = "";
 
+    var aboutTransmissionsTooltip = document.getElementById("aboutTransmissionsTooltipId");
+    aboutTransmissionsTooltip.title = "";
+    var aboutTransmissionsTooltipText = "";
+
     var aboutTransmissionsId = document.getElementById("aboutTransmissionsId");
     aboutTransmissionsId.innerText = "";
     var aboutTransmissionsText = "";
@@ -239,7 +243,14 @@ function ScenarioInformation() {
 
         aboutTransmissionsText += "Size of the message: " + messageSize + " bytes\n";
         distanceBetweenPlantes = 377000000;
-        distanceMotivation = "as the signal goes around the sun trough the lagrange points";
+        distanceMotivation = "\nas the signal goes around the sun trough the lagrange points";
+
+        aboutTransmissionsTooltipText =
+            "Lagrange Points"+
+            "Gravitational forces of the sun and earth can produce enhanced regions of attraction and repulsion. \n\n" +
+            "This is where Lagrange Points appears. " +
+            "Objects sent to a point tend to stay put. There are five Lagrange points placed around the sun and earth. " +
+            "In this case, we are taking advantage of the points L4 and L5 that are placed on each side of Earth that can be spotted in the picture.\n\n";
     }
 
     if (timeDelay > 0) {
@@ -248,7 +259,7 @@ function ScenarioInformation() {
         var messageTransferMethod = "radio";
         var textAboutTransferSpeed =
             "With help from the Mars Reconnaissance Orbiter it is possible to send data at a rate of at least " +  transferSpeed + "bits per second," +
-                " and at closer ranges even higher\n";
+                " and at closer ranges even higher";
 
         var selectedTransferMethod = getSelectedOption(transferMethod).id;
 
@@ -265,8 +276,8 @@ function ScenarioInformation() {
             " Au)\n";
 
             aboutTransmissionsText += "Signal distance: " + distanceForSignal 
-            + "km (" + (distanceForSignal / astronomicalUnit).toFixed(3) + " Au) \n"
-            + distanceMotivation + "\n\n";
+            + "km (" + (distanceForSignal / astronomicalUnit).toFixed(3) + " Au)"
+            + distanceMotivation;
 
         var dataTransferTime = messageSize / transferSpeed;
         var transferTime = timeDelay + dataTransferTime;
@@ -281,7 +292,7 @@ function ScenarioInformation() {
             " minutes)";
 
 
-        dataTransferInformationText += textAboutTransferSpeed;
+        aboutTransmissionsTooltipText += textAboutTransferSpeed;
 
 
         text += "\n";
@@ -292,5 +303,13 @@ function ScenarioInformation() {
 
     scenarioInformation.innerText = text;
     aboutTransmissionsId.innerText = aboutTransmissionsText;
+    aboutTransmissionsTooltip.title = aboutTransmissionsTooltipText;
+    if (aboutTransmissionsTooltipText !== "") {
+        aboutTransmissionsTooltip.style.display = "";
+    }
+    else {
+        aboutTransmissionsTooltip.style.display = "none";
+    }
+
     dataTransferInformation.innerText = dataTransferInformationText;
 }
