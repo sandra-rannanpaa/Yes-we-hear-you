@@ -1,7 +1,7 @@
 #overlay {
-  background-color: hsla(22, 90%, 60%, 0.15);
+  background-color: hsla(22, 9%, 60%, 0.1);
   width: 100%;
-  border-bottom: 3px solid hsla(22, 90%, 60%, 0.9)
+  border-bottom: 3px solid hsla(22, 9%, 60%, 0.1)
 }
 
 #scenarioButton, #sendMessageButton, #backbutton {
@@ -16,6 +16,12 @@
 
 #navitem.active { background-color: hsla(22, 90%, 60%, 0.9); }
 
+#welcome {
+  margin-left: 13px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 #headingfour {
     text-align: left;
     margin-left: 15px;
@@ -37,4 +43,5 @@
 
 #scenario1, #scenario2, #scenario3 {
     padding: 10px;
+    border: 10px solid hsla(224, 85%, 3%, 0.9);
 }
