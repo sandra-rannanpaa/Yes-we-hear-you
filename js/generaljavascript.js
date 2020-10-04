@@ -72,7 +72,6 @@ function changeTabs(tabName) {
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-    
     document.getElementById(tabName).style.display = "";
     setBackground();
 }
@@ -80,7 +79,8 @@ function changeTabs(tabName) {
 function changeScenarios(event, scenario) {
     changeScenario(scenario);
 
-}function changeScenario(scenario) {
+} function changeScenario(scenario) {
+    
     currentScenario = scenario + ".png";
     changeButtonState(sendMessageButton, false);
     changeTabs(sendMessage);
