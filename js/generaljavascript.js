@@ -12,44 +12,58 @@ var transferMethod = "transferMethod";
 var background = "background";
 var currentScenario = "";
 var scenario = "Scenario";
+var sendMessageButton = "scenarioButton";
 var sendMessage = "SendMessage";
 var sendMessageButton = "sendMessageButton";
+var backButton = "backButton";
 var submitButton = "submitButton";
-
+var messageSize = 0;
 
 function sendTheMessage() {
     var selectedTransferMethod = getSelectedOption(transferMethod);
 
+    hideElement(document.getElementById("InputId"));
+
     if (selectedTransferMethod.id === "laser") {
         setSolarSystemLaserImage();
+        updateOutPut("OutputLaserId");
     } else {
         setSolarSystemRadioImage();
+        updateOutPut("OutputRadioId");
     }
 
     return false;
 }
 
 function fileAdded() {
-    var sel = document.getElementsByClassName("messages");
+    var messageElement = getSelectedOption(messageType);
+    var messageElementId = messageElement.id;
+    var sizeId = messageElementId + "Size";
+    var inputId = messageElementId + "Input";
 
-    var thisId = "data";
-
-    var inputId = thisId + "Input";
+    var sizeElement = document.getElementById(sizeId);
+    sizeElement.innerText = "";
     var file = document.getElementById(inputId);
+    
+    ValidateSizeInMB(file, 5 * 1024 * 1024 * 1024);
 
-    alert(thisId);
-    ValidateSizeInMB(thisId, file, 500);
-    var file2 = file.value.split("\\");
-    var fileName = file2[file2.length-1];
+    if (messageSize > 0) {
+        var message = messageElementId + " size: " + messageSize + " byte";
+        sizeElement.innerText = message;
+    } else {
+        sizeElement.innerText = "";
+    }
 }
 
-function ValidateSizeInMB(thidId, file, maxFileSize) {
-    var fileSize = file.files[0].size / 1024 / 1024; // in MB
-    if (fileSize > maxFileSize) {
-        alert('File size exceeds '+maxFileSize+' MB');
+function ValidateSizeInMB(file, maxFileSize) {
+    messageSize = 0;
+    if (file.files.length < 1) {
+        messageSize = 0;
     } else {
-        var element = document.getElementById(thisId + "Size");
-        element.innerHTML = "abd";
+        var localFileSize = file.files[0].size; // in Byte
+        if (localFileSize < maxFileSize) {
+            messageSize = localFileSize;
+        }
     }
 }
 
@@ -59,11 +73,11 @@ function messageTypeChanged() {
     var sel = document.getElementsByClassName("messages");
 
     for (var i = 0; i < sel.length; i++) {
-        sel[i].style.display = "none";
+        hideElement(sel[i]);
     }
 
-    sel = document.getElementById(opt+"Message");
-    sel.style.display = "";
+    sel = document.getElementById(opt + "Message");
+    showElement(sel);
 }
 
 function setSolarSystemImage() {
@@ -128,7 +142,7 @@ function getSelectedOption(selectedId) {
 function changeTab() {
     var tab = scenario;
 
-    if (this.id == sendMessageButton) {
+    if (this.id === sendMessageButton || this.id === backButton) {
         tab = sendMessage;
     }
 
@@ -139,10 +153,21 @@ function changeTabs(tabName) {
     var i;
     var tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+        hideElement(tabcontent[i]);
     }
-    document.getElementById(tabName).style.display = "";
+
+    hideOutPut();
+    showElement(document.getElementById("InputId"));
+    showElement(document.getElementById(tabName));
     setSolarSystemImage();
+}
+
+function hideElement(element) {
+    element.style.display = "none";
+}
+
+function showElement(element) {
+    element.style.display = "";
 }
 
 function changeScenariosEventHandler() {
@@ -158,4 +183,16 @@ function changeScenario(scenario) {
 function changeButtonState(buttonId, state) {
     var button = document.getElementById(buttonId);
     button.disabled = state;
+}
+
+function hideOutPut() {
+    hideElement(document.getElementById("OutputGeneralId"));
+    hideElement(document.getElementById("OutputRadioId"));
+    hideElement(document.getElementById("OutputLaserId"));
+}
+
+function updateOutPut(outputId) {
+    hideOutPut();
+    showElement(document.getElementById("OutputGeneralId"));
+    showElement(document.getElementById(outputId));
 }
