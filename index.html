@@ -36,7 +36,7 @@
                 <div class="col-sm-4 card" id="scenario1">
                     <img src="images/scenario1.png" alt="scenario1" class="img-fluid card-img-top" />
                     <div class="card-body">
-                        <h5 class="card-title">Scenario 1</h5>
+                        <h5 class="card-title">Scenario 1: Conjunction</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                 </div>
@@ -130,11 +130,15 @@
                     <div id="predefinedMessage" class="messages" style="display: none">
                         <label for="predefinedTransferMessage">Predefined Message:</label>
                         <i class="fa fa-info-circle" title="
-        Predefined messages:"></i>
+        To save bandwidth, predefined messages is a good approach,
+        as long as both the transmitter and receiver have agreed
+        on the same definitions"></i>
                         <select class="form-control" id="predefinedTransferMessage" onchange="return messageTypeChanged();">
-                            <option>Weather is nice</option>
-                            <option>Weather is bad</option>
-                            <option>Sandstorm in coming</option>
+                            <option> 010 (=Weather is nice)</option>
+                            <option> 011 (=Weather is bad)</option>
+                            <option> 100 (=I am okay)</option>
+                            <option> 101 (= SOS) </option>
+                            <option> 110 (=Sandstorm is coming)</option>
                         </select>
                     </div>
                 </div>
