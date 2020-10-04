@@ -11,9 +11,7 @@
     <script src="./js/generaljavascript.js?v=1"></script>
     <link rel="stylesheet" href="./styles/generalstyle.css?v=1">
 </head>
-<body id="background" style="background-image: url('images/sunrise.jpg')">
-
-
+<body id="background" style="background-image: url('images/Spacebackground.png')">
 
 <div class="row nav tab" style="padding-bottom: 70px;">
     <div class="nav-overlay" id="overlay">
@@ -25,7 +23,7 @@
                     <button class="btn btn-link btn-block tablinks navtext active" id="scenarioButton">1. Choose scenario</button>
                 </li>
                 <li class="nav-item" id="navitem">
-                    <button class="btn btn-link btn-block tablinks navtext" disabled="true" id="sendMessageButton">2. Send message</button>
+                    <button class="btn btn-link btn-block tablinks navtext" disabled id="sendMessageButton">2. Send message</button>
                 </li>
             </ul>
         </nav>
@@ -157,24 +155,22 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <button type="submit" id="submitButton" disabled="true" class="btn btn-primary btn-block">Send</button>
+                    <button type="submit" id="submitButton" disabled class="btn btn-primary btn-block">Send</button>
                 </div>
             </form>
         </div>
 
         <div class="col-sm-9">
             <div class="row">
-                <div class="col-sm-12 alert-danger">
-
-                    todo<br />
-                    Add graphical element
+                <div class="col-sm-12">
+                    <img id="scenarioImage" src="" width="100%" />
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="navbar fixed-bottom alert-info">
-    <footer style="vertical-align: center">
+    <footer>
         <a class="text-center text-black-50" href="https://2020.spaceappschallenge.org/challenges/connect/can-you-hear-me-now/resources">2020 Space Apps Challenge</a>
         -
         David Rönnqvist,

@@ -38,20 +38,19 @@ function messageTypeChanged() {
     sel.style.display = "";
 }
 
-function setBackground() {
-
-    if (currentScenario !== "") {
-        var sel = document.getElementById(background);
-        sel.style = "background-image: url('images/" + currentScenario + "')";
-    } else {
-        resetBackground();
+function setSolarSystemImage() {
+    var src = "";
+    if (currentScenario === "scenario1.png") {
+        src = "./images/" + "transparent_scenario1.png";
     }
-}
-
-function resetBackground() {
-
-    var sel = document.getElementById(background);
-    sel.style = "background-image: url('images/sunrise.jpg')";
+    if (currentScenario === "scenario2.png") {
+        src = "./images/" + "transparent_scenario2.png";
+    }
+    if (currentScenario === "scenario3.png") {
+        src = "./images/" + "transparent_scenario3.png";
+    }
+    var sel = document.getElementById("scenarioImage");
+    sel.src = src;
 }
 
 function getSelectedOption(selectedId) {
@@ -85,7 +84,7 @@ function changeTabs(tabName) {
         tabcontent[i].style.display = "none";
     }
     document.getElementById(tabName).style.display = "";
-    setBackground();
+    setSolarSystemImage();
 }
 
 function changeScenariosEventHandler() {
