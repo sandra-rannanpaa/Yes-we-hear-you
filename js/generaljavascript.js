@@ -60,7 +60,7 @@ function fileAdded() {
     sizeElement.innerText = "";
     var file = document.getElementById(inputId);
     
-    ValidateSizeInBYTE(file, 5 * 1024 * 1024 * 1024);
+    ValidateSizeInBYTE(file);
 
     if (messageSize > 0) {
         var message = messageElementId + " size: " + messageSize + " bytes";
@@ -74,17 +74,14 @@ function ValidateTextSizeInBYTE(text) {
     messageSize = text.value.length;
 }
 
-function ValidateSizeInBYTE(file, maxFileSize) {
+function ValidateSizeInBYTE(file) {
     messageSize = 0;
     if (file.files.length < 1) {
         messageSize = 0;
     } else {
         var localFileSize = file.files[0].size; // in Byte
-        if (localFileSize < maxFileSize) {
-            messageSize = localFileSize;
-        }
+        messageSize = localFileSize;
     }
-    //ScenarioInformation();
 }
 
 function messageTypeChanged() {
@@ -97,6 +94,7 @@ function messageTypeChanged() {
     }
 
     sel = document.getElementById(opt + "Message");
+    messageSize = 0;
     showElement(sel);
 }
 
@@ -249,6 +247,8 @@ function ScenarioInformation() {
             "This is where Lagrange Points appears. " +
             "Objects sent to a point tend to stay put. There are five Lagrange points placed around the sun and earth. " +
             "In this case, we are taking advantage of the points L4 and L5 that are placed on each side of Earth that can be spotted in the picture.\n\n";
+    } else {
+        aboutTransmissionsText = "Only scenario1 is supported at this moment.";
     }
 
     if (timeDelay > 0) {
