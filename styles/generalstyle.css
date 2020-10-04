@@ -1,12 +1,12 @@
 #overlay {
-  background-color: hsla(25, 0%, 0%, 0.4);
+  background-color: hsla(25, 30%, 30%, 0.3);
   width: 100%;
   border-bottom: 3px solid hsla(25, 80%, 60%, 0.6);
 
 }
 
 #scenarioButton, #sendMessageButton {
-  margin-left: 34px;
+  margin-left: 15px;
   padding: 10px;
   color: white;
   border-color: hsla(21, 15%, 50%, 0.6);
@@ -20,9 +20,14 @@
 }
 #headingfour {
   text-align: left;
-  margin-left: 13px;
+  margin-left: 15px;
   margin-bottom: 13px;
+  margin-top: 7px;
 
+}
+#headingSendMSG {
+  margin-left: 1px;
+  margin-top: 7px;
 }
 #background {
   background-image: url('images/sunrise.jpg');
