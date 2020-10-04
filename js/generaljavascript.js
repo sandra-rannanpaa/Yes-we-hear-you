@@ -17,12 +17,40 @@ var sendMessageButton = "sendMessageButton";
 var submitButton = "submitButton";
 
 
-function myFunction() {
-    alert("Hello World!");
+function sendTheMessage() {
+    var selectedTransferMethod = getSelectedOption(transferMethod);
+
+    if (selectedTransferMethod.id === "laser") {
+        setSolarSystemLaserImage();
+    } else {
+        setSolarSystemRadioImage();
+    }
+
+    return false;
 }
 
-function doSomething() {
-    return false;
+function fileAdded() {
+    var sel = document.getElementsByClassName("messages");
+
+    var thisId = "data";
+
+    var inputId = thisId + "Input";
+    var file = document.getElementById(inputId);
+
+    alert(thisId);
+    ValidateSizeInMB(thisId, file, 500);
+    var file2 = file.value.split("\\");
+    var fileName = file2[file2.length-1];
+}
+
+function ValidateSizeInMB(thidId, file, maxFileSize) {
+    var fileSize = file.files[0].size / 1024 / 1024; // in MB
+    if (fileSize > maxFileSize) {
+        alert('File size exceeds '+maxFileSize+' MB');
+    } else {
+        var element = document.getElementById(thisId + "Size");
+        element.innerHTML = "abd";
+    }
 }
 
 function messageTypeChanged() {
@@ -40,14 +68,44 @@ function messageTypeChanged() {
 
 function setSolarSystemImage() {
     var src = "";
-    if (currentScenario === "scenario1.png") {
+    if (currentScenario === "scenario1") {
         src = "./images/" + "transparent_scenario1.png";
     }
-    if (currentScenario === "scenario2.png") {
+    if (currentScenario === "scenario2") {
         src = "./images/" + "transparent_scenario2.png";
     }
-    if (currentScenario === "scenario3.png") {
+    if (currentScenario === "scenario3") {
         src = "./images/" + "transparent_scenario3.png";
+    }
+    var sel = document.getElementById("scenarioImage");
+    sel.src = src;
+}
+
+function setSolarSystemLaserImage() {
+    var src = "";
+    if (currentScenario === "scenario1") {
+        src = "./images/" + "transparent_scenario1_laser.png";
+    }
+    if (currentScenario === "scenario2") {
+        src = "./images/" + "transparent_scenario2_laser.png";
+    }
+    if (currentScenario === "scenario3") {
+        src = "./images/" + "transparent_scenario3_laser.png";
+    }
+    var sel = document.getElementById("scenarioImage");
+    sel.src = src;
+}
+
+function setSolarSystemRadioImage() {
+    var src = "";
+    if (currentScenario === "scenario1") {
+        src = "./images/" + "transparent_scenario1_radio.png";
+    }
+    if (currentScenario === "scenario2") {
+        src = "./images/" + "transparent_scenario2_radio.png";
+    }
+    if (currentScenario === "scenario3") {
+        src = "./images/" + "transparent_scenario3_radio.png";
     }
     var sel = document.getElementById("scenarioImage");
     sel.src = src;
@@ -92,7 +150,7 @@ function changeScenariosEventHandler() {
 }
 
 function changeScenario(scenario) {
-    currentScenario = scenario + ".png";
+    currentScenario = scenario;
     changeButtonState(sendMessageButton, false);
     changeTabs(sendMessage);
 }
