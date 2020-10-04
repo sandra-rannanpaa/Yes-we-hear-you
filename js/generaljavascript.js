@@ -23,7 +23,7 @@ var astronomicalUnit = 149597871;
 var scenario1SignalRange = 477000000;
 var speedOfLight = 299792.458;
 var radioDataRate = 500 * 1024;
-var laserDataRate = 291666;
+var laserDataRate = radioDataRate * 10;
 
 function sendTheMessage() {
     var selectedTransferMethod = getSelectedOption(transferMethod);
@@ -265,8 +265,12 @@ function ScenarioInformation() {
 
         if (selectedTransferMethod === "laser") {
             messageTransferMethod = "laser";
-            textAboutTransferSpeed = "";
             transferSpeed = laserDataRate;
+            textAboutTransferSpeed =
+                "The Deep Space Optical Communications is said to have 10x time the speed of the current" +
+                " Deep Space Network, that would give us around " +
+                transferSpeed +
+                "bits per second";
         }
 
         aboutTransmissionsText += "Distance Mars - Earth: " +
@@ -292,7 +296,7 @@ function ScenarioInformation() {
             " minutes\n" +
             "Total time: " +
             (transferTime / 60).toFixed(2) +
-            " minutes)";
+            " minutes";
 
 
         aboutTransmissionsTooltipText += textAboutTransferSpeed;
