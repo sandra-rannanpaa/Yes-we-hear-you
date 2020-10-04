@@ -16,8 +16,6 @@ var sendMessageButton = "sendMessageButton";
 var submitButton = "submitButton";
 
 function doSomething() {
-    var opt = getSelectedOption(currentLocation).value;
-
     return false;
 }
 
@@ -36,7 +34,7 @@ function messageTypeChanged() {
 
 function setBackground() {
 
-    if (currentScenario != "") {
+    if (currentScenario !== "") {
         var sel = document.getElementById(background);
         sel.style = "background-image: url('images/" + currentScenario + "')";
     } else {
@@ -46,7 +44,7 @@ function setBackground() {
 
 function resetBackground() {
 
-    var sel = document.getElementById(background)
+    var sel = document.getElementById(background);
     sel.style = "background-color: black";
 }
 
@@ -74,14 +72,15 @@ function changeTabs(tabName) {
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-
-    var ad = document.getElementById(tabName).style.display;
-    
     document.getElementById(tabName).style.display = "";
     setBackground();
 }
 
-function changeScenario(scenario) {
+function changeScenarios(event, scenario) {
+    changeScenario(scenario);
+
+} function changeScenario(scenario) {
+    
     currentScenario = scenario + ".png";
     changeButtonState(sendMessageButton, false);
     changeTabs(sendMessage);
