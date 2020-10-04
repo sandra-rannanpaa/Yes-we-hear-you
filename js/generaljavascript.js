@@ -47,6 +47,7 @@ function sendTheMessage() {
 
     hideElement(document.getElementById("InputId"));
     ScenarioInformation();
+    scrollToTop();
     return false;
 }
 
@@ -163,7 +164,7 @@ function changeTab() {
     if (this.id === sendMessageButton || this.id === backButton || this.id === tryAgainButton) {
         tab = sendMessage;
     }
-
+    scrollToTop();
     changeTabs(tab);
 }
 
@@ -196,6 +197,7 @@ function changeScenario(scenario) {
     currentScenario = scenario;
     changeButtonState(sendMessageButton, false);
     changeTabs(sendMessage);
+    scrollToTop();
 }
 
 function changeButtonState(buttonId, state) {
@@ -209,6 +211,10 @@ function hideOutPut() {
 
 function updateOutPut() {
     showElement(document.getElementById("OutputGeneralId"));
+}
+
+function scrollToTop() {
+    window.scrollTo(0, 0);
 }
 
 function ScenarioInformation() {
